@@ -148,14 +148,6 @@ This means:
 
 ---
 
-# 🔹 Quick Interview Mapping
-- **Strong Consistency** → Banking, stock trading.  
-- **Eventual Consistency** → Social media feeds, DNS, shopping carts.  
-- **Causal Consistency** → Social networks, chat apps.  
-- **Session Consistency** → User sessions (profile updates, cart).  
-- **Linearizability** → Leader election, distributed locks.
-
----
 
 # 🔹 Consistency Types Comparison Table
 
