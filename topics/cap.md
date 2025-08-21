@@ -153,4 +153,19 @@ This means:
 - **Eventual Consistency** → Social media feeds, DNS, shopping carts.  
 - **Causal Consistency** → Social networks, chat apps.  
 - **Session Consistency** → User sessions (profile updates, cart).  
-- **Linearizability** → Leader election, distributed locks.  
+- **Linearizability** → Leader election, distributed locks.
+
+---
+
+# 🔹 Consistency Types Comparison Table
+
+| Consistency Type       | Guarantees / Behavior                                                                 | Example Use Case                           |
+|------------------------|--------------------------------------------------------------------------------------|-------------------------------------------|
+| **Strong Consistency** | All reads return the most recent write.                                               | Banking, stock trading                     |
+| **Eventual Consistency** | Replicas converge over time; reads may return stale data temporarily.               | Social media feeds, DNS, shopping carts   |
+| **Causal Consistency** | Operations that are causally related are seen in order; independent ops may be reordered. | Social media posts & likes, chat apps     |
+| **Read-Your-Writes**   | A user always sees their own writes in subsequent reads.                              | User profile updates, session data        |
+| **Monotonic Reads**    | Once a value is read, future reads will never return older data.                      | Likes count, read counters                 |
+| **Monotonic Writes**   | Writes from a user are seen in the order they were issued.                             | Account balance updates                     |
+| **Session Consistency**| Guarantees read-your-writes + monotonic reads within a session.                       | Mobile/web apps with user sessions         |
+| **Linearizability**    | Each operation appears to occur instantaneously at a single point in time (single-copy consistency). | Leader election, distributed locks         |
