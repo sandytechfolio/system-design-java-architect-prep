@@ -56,19 +56,15 @@ This means:
   _Example:_ A traditional relational database (not distributed).
 
 ## 🔹 CAP Triangle
-markdown
-Copy
-Edit
+
       Consistency (C)
          /\
         /  \
        /    \
 Availability ---- Partition Tolerance
-(A) (P)
+(A)               (P)
 
-yaml
-Copy
-Edit
+
 
 - In distributed systems, **network partitions (P) are inevitable**.  
 - Real choice = **Consistency (C) vs Availability (A)**.  
@@ -95,9 +91,3 @@ Edit
 
 ---
 
-## 🔹 Quick Interview Tips
-- **Always say:** Partition Tolerance (P) is **non-negotiable** in distributed systems.  
-- Real choice: **C vs A**.  
-- **Consistency (CP)** = Banking, Trading.  
-- **Availability (AP)** = Social Media, Shopping Carts, DNS/CDN.  
-- **CA** = Only in single-node or ideal networks.  
