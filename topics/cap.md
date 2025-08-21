@@ -55,17 +55,7 @@ This means:
   Not possible under partitions (only possible in a single-node or perfectly reliable network).  
   _Example:_ A traditional relational database (not distributed).
 
-## 🔹 CAP Triangle
-
-          Consistency (C)
-             /\
-            /  \
-           /    \
-Availability ---- Partition Tolerance
-         (A)               (P)
-
-
-
+---
 
 
 - In distributed systems, **network partitions (P) are inevitable**.  
