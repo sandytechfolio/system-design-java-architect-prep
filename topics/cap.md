@@ -57,12 +57,14 @@ This means:
 
 ## 🔹 CAP Triangle
 
-      Consistency (C)
-         /\
-        /  \
-       /    \
+          Consistency (C)
+             /\
+            /  \
+           /    \
 Availability ---- Partition Tolerance
-(A)               (P)
+         (A)               (P)
+
+
 
 
 
