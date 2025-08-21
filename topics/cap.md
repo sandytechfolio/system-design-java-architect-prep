@@ -54,3 +54,50 @@ This means:
 - **CA systems:** Prioritize **Consistency + Availability**  
   Not possible under partitions (only possible in a single-node or perfectly reliable network).  
   _Example:_ A traditional relational database (not distributed).
+
+## 🔹 CAP Triangle
+markdown
+Copy
+Edit
+      Consistency (C)
+         /\
+        /  \
+       /    \
+Availability ---- Partition Tolerance
+(A) (P)
+
+yaml
+Copy
+Edit
+
+- In distributed systems, **network partitions (P) are inevitable**.  
+- Real choice = **Consistency (C) vs Availability (A)**.  
+
+---
+
+## 🔹 CAP System Types & Examples
+| Type | Trade-off | Examples |
+|------|-----------|----------|
+| **CA** (Consistency + Availability) | Works only when no partitions. Not realistic for large distributed systems. | Traditional RDBMS (MySQL, PostgreSQL, Oracle in single-node mode) |
+| **CP** (Consistency + Partition tolerance) | Always consistent, but may sacrifice availability under partition. | MongoDB (majority writes), HBase, Zookeeper, Spanner |
+| **AP** (Availability + Partition tolerance) | Always available, but may return stale/inconsistent data (eventual consistency). | DynamoDB, Cassandra, CouchDB, Riak, Cosmos DB |
+
+---
+
+## 🔹 Real-World Scenarios
+| Use Case | CAP Choice | Why |
+|----------|------------|-----|
+| **Banking / Money Transfers** | **CP** | Accuracy > availability (better to fail than show wrong balance). |
+| **E-commerce Shopping Cart** | **AP** | Must accept writes (cart updates) even if inventory is slightly stale. |
+| **Social Media Feed** | **AP** | Better to see slightly old posts than see downtime. |
+| **Stock Trading** | **CP** | Trades must be consistent, downtime is better than incorrect trades. |
+| **DNS / CDN** | **AP** | Must always resolve requests, stale data is acceptable. |
+
+---
+
+## 🔹 Quick Interview Tips
+- **Always say:** Partition Tolerance (P) is **non-negotiable** in distributed systems.  
+- Real choice: **C vs A**.  
+- **Consistency (CP)** = Banking, Trading.  
+- **Availability (AP)** = Social Media, Shopping Carts, DNS/CDN.  
+- **CA** = Only in single-node or ideal networks.  
