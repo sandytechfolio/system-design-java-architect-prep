@@ -83,3 +83,74 @@ This means:
 
 ---
 
+# 🔹 Types of Consistency in Distributed Systems
+
+## 1. Strong Consistency
+- After a write, **all reads** return the most recent value.
+- Users always see the latest data, no matter which replica they read from.
+- ✅ Guarantees correctness  
+- ❌ Slower, higher latency (requires coordination/consensus)  
+- **Examples**: Google Spanner, HBase (with quorum), traditional RDBMS.  
+
+---
+
+## 2. Eventual Consistency
+- Given enough time (and no new writes), all replicas **converge** to the same value.
+- Reads may return **stale data** for some time.
+- ✅ High availability, low latency  
+- ❌ Inconsistency possible temporarily  
+- **Examples**: DynamoDB, Cassandra, S3, DNS systems.  
+
+---
+
+## 3. Causal Consistency
+- If **operation B is caused by A**, then every node must see A before B.
+- Independent operations may be seen in different orders.
+- ✅ Preserves “cause-effect” relationships  
+- **Example**: Social media — if you see a post, you should also see the “like” on it afterwards.  
+
+---
+
+## 4. Read-Your-Writes Consistency
+- After a user writes data, their own reads will **always reflect that write**.
+- Other users may still see stale values temporarily.
+- ✅ Good for user-facing apps (e.g., updating your profile picture).  
+- **Examples**: Many mobile apps, caching layers with session stickiness.  
+
+---
+
+## 5. Monotonic Reads
+- If a user reads a value, **future reads will never return older data**.
+- Guarantees "time doesn’t go backward" for a single user.
+- ✅ Avoids confusion (e.g., seeing “100 likes” first and later “80 likes”).  
+
+---
+
+## 6. Monotonic Writes
+- A user’s writes are **seen in the order they were made**.
+- Ensures no write reordering (e.g., updates to account balance).  
+
+---
+
+## 7. Session Consistency
+- Guarantees **read-your-writes + monotonic reads** within a session.
+- Common in **mobile and web apps** where a user session must behave consistently.
+- **Example**: Azure Cosmos DB offers session consistency.  
+
+---
+
+## 8. Linearizability (Single-copy Consistency)
+- Strongest form: Every read/write appears to occur **instantly at a single point in time**.
+- Equivalent to having **one copy of data**.
+- ✅ Simplest to reason about  
+- ❌ Most expensive (requires synchronization/consensus like Paxos/Raft).  
+- **Examples**: Zookeeper, Chubby (Google).  
+
+---
+
+# 🔹 Quick Interview Mapping
+- **Strong Consistency** → Banking, stock trading.  
+- **Eventual Consistency** → Social media feeds, DNS, shopping carts.  
+- **Causal Consistency** → Social networks, chat apps.  
+- **Session Consistency** → User sessions (profile updates, cart).  
+- **Linearizability** → Leader election, distributed locks.  
